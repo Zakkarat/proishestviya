@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBInput } from 'mdbreact';
+import { toFile, fromFile } from '../../toFile'
 
 const CardExample = () => {
+  const [occassion, setOccasion] = useState('');
+
+  const handleClick = () => {
+    
+  }
   return (
     <MDBCol>
       <MDBCard >
@@ -9,9 +15,9 @@ const CardExample = () => {
         <MDBCardBody>
           <MDBCardTitle className="black-text">Что-то случилось с Натали? А то не случалось уже </MDBCardTitle>
           <MDBCardText>
-          <MDBInput label="А что случилось?" />
+          <MDBInput value={occassion} onChange={({target}) => setOccasion(target.value)} label="А что случилось?" />
           </MDBCardText>
-          <MDBBtn href="#">Объявить об этом на весь мир!</MDBBtn>
+          <MDBBtn onClick={handleClick} href="#">Объявить об этом на весь мир!</MDBBtn>
         </MDBCardBody>
       </MDBCard>
     </MDBCol>
