@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBInput } from 'mdbreact';
-import { toFile, fromFile } from '../../toFile'
 
 const CardExample = () => {
   const [occassion, setOccasion] = useState('');
 
   const handleClick = () => {
-    
   }
   return (
     <MDBCol>

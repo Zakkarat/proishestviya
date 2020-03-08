@@ -5,6 +5,7 @@ const toFile = cities => {
     if (err) {
       throw err;
     }
+    console.log('heh')
   });
 };
 
