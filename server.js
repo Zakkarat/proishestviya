@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path');
 const db = require("./db")
+const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser')
 
 app.use(function(req, res, next) {
@@ -30,4 +31,4 @@ app.post('/proishestviya', (req, res) => {
   })
 
 
-  app.listen(9000, () => console.log('Server ready'))
+  app.listen(port, () => console.log('Server ready'))
