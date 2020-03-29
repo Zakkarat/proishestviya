@@ -30,4 +30,4 @@ app.post('/proishestviya', (req, res) => {
   })
 
 
-  app.listen(9000, () => console.log('Server ready'))
+  app.listen(process.env.PORT || 9000, () => console.log('Server ready'))
