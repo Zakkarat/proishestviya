@@ -25,6 +25,12 @@ app.get('/proishestviya', (req, res) => {
      res.send(rows)
      })
   })
+  app.get('/history', (req, res) => {
+    res.redirect('/');
+  })
+  app.get('/clear', (req, res) => {
+    db.run(`DELETE FROM Proishestviya WHERE key=''`);
+  })
 app.post('/proishestviya', (req, res) => {
     db.run(`INSERT INTO Proishestviya (time, story) VALUES (${new Date().getTime()}, '${req.body.story}')`);
     res.send("Ok");
