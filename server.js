@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
 const path = require('path');
-const db = require("./db")
-const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser')
+const { pool } = require('./config')
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -16,25 +15,24 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.get('/init', (req, res) => {
+  pool.query('CREATE TABLE IF NOT EXISTS Proishestviya (Id SERIAL PRIMARY KEY, time BIGINT, story TEXT)')
+  res.send(200)
+})
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
   
 app.get('/proishestviya', (req, res) => {
-     db.all('SELECT * FROM proishestviya', (err, rows) => {
+     pool.query('SELECT * FROM Proishestviya', (err, {rows}) => {
      res.send(rows)
      })
   })
-  app.get('/history', (req, res) => {
-    res.redirect('/');
-  })
-  app.get('/clear', (req, res) => {
-    db.run(`DELETE FROM Proishestviya WHERE key=''`);
-  })
 app.post('/proishestviya', (req, res) => {
-    db.run(`INSERT INTO Proishestviya (time, story) VALUES (${new Date().getTime()}, '${req.body.story}')`);
+    pool.query(`INSERT INTO Proishestviya (time, story) VALUES (${new Date().getTime()}, '${req.body.story}')`);
     res.send("Ok");
   })
 
 
-  app.listen(port, () => console.log('Server ready'))
+  app.listen(9000, () => console.log('Server ready'))
