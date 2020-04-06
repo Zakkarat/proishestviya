@@ -3,6 +3,7 @@ const app = express()
 const path = require('path');
 const bodyParser = require('body-parser')
 const { pool } = require('./config')
+const port = process.env.PORT || 9000;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -35,4 +36,4 @@ app.post('/proishestviya', (req, res) => {
   })
 
 
-  app.listen(9000, () => console.log('Server ready'))
+  app.listen(port, () => console.log('Server ready'))
