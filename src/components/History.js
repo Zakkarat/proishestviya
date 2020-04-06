@@ -10,6 +10,7 @@ const History = () => {
         async res => await res.json()
       );
       setData(data);
+      console.log(data);
     };
 
     fetchData()
@@ -24,7 +25,7 @@ const History = () => {
       <MDBCardBody>
       <MDBCardTitle style={{'color': 'black'}}>{elem.story}</MDBCardTitle>
         <MDBCardText>
-      Вот такое с Натали случилось <Moment locale='ru' fromNow>{elem.time}</Moment>
+      Вот такое с Натали случилось <Moment locale='ru' fromNow>{parseInt(elem.time)}</Moment>
         </MDBCardText>
       </MDBCardBody>
     </MDBCard>

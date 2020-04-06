@@ -1,0 +1,3 @@
+CREATE TABLE
+IF NOT EXISTS Proishestviya
+(Id SERIAL PRIMARY KEY, time DATE, story TEXT)
